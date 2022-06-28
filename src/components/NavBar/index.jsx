@@ -36,7 +36,7 @@ const NavBar = () => {
           </ul>
         </li>
         <li>
-          <CartWidget/>
+          <CartWidget value={2}/>
         </li>
       </ul>
   <Input/>
