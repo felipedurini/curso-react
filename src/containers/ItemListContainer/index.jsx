@@ -32,6 +32,7 @@ useEffect(() => {
   console.log(error)
   }
   }
+  
   const task= new Promise((res,rej)=>{
     setTimeout(() => {
       res(fetch('https://rickandmortyapi.com/api/character'))
