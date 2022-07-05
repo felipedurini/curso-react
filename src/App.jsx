@@ -14,17 +14,17 @@ function App() {
     <div className="App">
 
     <NavBar/>
-    <ItemDetailContainer/>
+    {/* <ItemDetailContainer/> */}
 
-     {/*
+     
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<ItemListContainer/>}></Route>
       <Route path='/species/:categoryId' element={<ItemListContainer/>}></Route>
       <Route path='*' element={<PageNotFound/>}/>
     </Routes>
-    </BrowserRouter> */}
-    {/* <ItemListContainer greeting='Wololo'/> */}
+    </BrowserRouter> 
+     <ItemListContainer greeting='Wololo'/>
     </div>
   );
 }

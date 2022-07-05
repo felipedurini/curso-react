@@ -1,0 +1,8 @@
+.item{
+        margin:0;
+        border: 0;
+        padding: 30px;
+        font-size: 25px;
+        box-shadow: 4px 6px 18px 5px rgba(0, 0, 0, 0.85);
+        display: flex;
+}

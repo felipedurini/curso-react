@@ -43,7 +43,7 @@ getCharacters()
 
 
 return (
-  <div>
+  <div className='item-list'>
   {characters ? 
     <ItemList characters={characters.results}/> 
     :
