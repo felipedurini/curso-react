@@ -4,9 +4,7 @@ import './style.css'
 
 const ItemList = ({characters}) => {
     return (
-    <div>
-        {characters?.map(character=> <Item key={character.id} character={character}/>)}
-    </div>
+        <>{characters?.map(character=> <Item key={character.id} character={character}/>)}</>
   )
 }
 

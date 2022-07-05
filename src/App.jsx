@@ -13,18 +13,18 @@ function App() {
   return (
     <div className="App">
 
-    <NavBar/>
     {/* <ItemDetailContainer/> */}
 
      
     <BrowserRouter>
+    <NavBar/>
     <Routes>
       <Route path='/' element={<ItemListContainer/>}></Route>
-      <Route path='/species/:categoryId' element={<ItemListContainer/>}></Route>
+      <Route path='/category/:categoryId' element={<ItemListContainer/>}></Route>
+      <Route path='/detail/:productId' element={<ItemDetailContainer/>}></Route>
       <Route path='*' element={<PageNotFound/>}/>
     </Routes>
     </BrowserRouter> 
-     <ItemListContainer greeting='Wololo'/>
     </div>
   );
 }

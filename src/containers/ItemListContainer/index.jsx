@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import ItemCount from '../../components/ItemCount'
 import ItemList from '../../components/ItemList'
 import './style.css'
@@ -18,7 +19,9 @@ const ItemListContainer = ({greeting}) => {
 
 
   
-const [characters, setCharacters] = useState(null)
+const [characters, setCharacters] = useState([])
+const [productosFiltrados, setProductosFiltrados] = useState([])
+const params= useParams() 
 
 
 useEffect(() => {
@@ -27,7 +30,9 @@ useEffect(() => {
     const response=await task
     const data=await response.json()
     console.log(data)
-    setCharacters(data)
+    console.log(data.results)
+    setCharacters(data.results);
+    setProductosFiltrados(data.results);
   } catch (error) {
   console.log(error)
   }
@@ -41,13 +46,23 @@ useEffect(() => {
 getCharacters()
 },[])
 
+useEffect(() => {
+  if (params?.categoryId) {
+    const productosFiltrados = characters.filter(producto => producto.species === params.categoryId)
+    setProductosFiltrados(productosFiltrados)
+  } else {
+    setProductosFiltrados(characters)
+  }
+}, [params, characters])
+
+console.log(characters)
 
 return (
   <div className='item-list'>
-  {characters ? 
-    <ItemList characters={characters.results}/> 
+  {characters.length !== 0 ? 
+    <ItemList characters={productosFiltrados}/> 
     :
-null
+<p>Loading...</p>
   }
 </div>
 )
