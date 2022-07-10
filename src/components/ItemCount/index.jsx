@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const ItemCount = ({handleAdd, initial, stock}) => {
 
-    const [count, setCount]=useState(0)
+    const [count, setCount]=useState(1)
 
     const onAdd= ()=> {
         if(count<stock){
@@ -24,11 +24,11 @@ const ItemCount = ({handleAdd, initial, stock}) => {
     <div>
       <p>{count}</p>
 
-      <button onClick={onAdd}>+</button>
+      <button onClick={onDecrement}>-</button>
       
       <button onClick={()=>handleAdd(count)}>Agregar al carrito</button>
 
-      <button onClick={onDecrement}>-</button>
+      <button onClick={onAdd}>+</button>
 
     </div>
   )

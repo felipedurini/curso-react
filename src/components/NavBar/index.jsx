@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Input from '../Input'
 import CartWidget from '../CartWidget'
 import './style.css'
 import { Link } from 'react-router-dom'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
+import { Shop } from '../../context/ShopContext'
 
 const NavBar = () => {
+
+const {estadoA}=useContext(Shop)
+console.log(estadoA)
+
   return (
     <Navbar bg="light" expand="lg" id='navbar'>
     <Container>
@@ -19,6 +24,7 @@ const NavBar = () => {
             <Link className='title' to='/category/Human'>Humans</Link>
             <Link className='title' to='/category/Alien'>Aliens</Link>
             <Link className='title' to='/category/Others'>Others</Link>
+            <Link className='title' to='/category/Others'>{estadoA}</Link>
           </NavDropdown>
         <CartWidget/>
         </Nav>
