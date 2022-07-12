@@ -2,32 +2,28 @@ import React from 'react'
 import { useContext } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import ItemCount from '../ItemCount'
 import { Shop } from '../../context/ShopContext'
+import ItemCount from '../ItemCount'
 import './style.css'
 
 const ItemDetail = ({product}) => {
-  
-  const {addItem} = useContext(Shop)
-  console.log(addItem)
 
   const navigate = useNavigate();
 
   product.stock=10
+
   const [qtyAdded, setQty]=useState(0)
 
+  const {addItem} = useContext(Shop)
 
   const onConfirm = (qty) => {
     setQty(qty)
+    addItem(product, qty)
   }
 
   const handleNavigate = () => { 
-    addItem(product, qtyAdded)
     navigate('/cart')
   }
-
-
-console.log(qtyAdded)
 
   return (<div className='item-detail'>
   <h1>{product.name}</h1>

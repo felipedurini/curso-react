@@ -9,11 +9,25 @@ const ShopProvider = ({children}) => {
     const [cart, setCart] = useState([])
 
     const addItem = (product, qty) =>{
-      console.log(`${product} , ${qty}`)
+      console.log(qty)
+      const repeatedProduct=isInCart(product);
+      if(repeatedProduct){
+            repeatedProduct.quantity+=qty
+            setCart([...cart])
+            console.log(product)
+      }
+      else{
+        setCart([...cart, {...product, quantity:qty}]);
+        console.log(product)
+      }
+    }
+
+    const isInCart = (producto) => {
+      return cart.find(element => element.id===producto.id)
     }
 
   return (
-    <Shop.Provider value={{estadoA, setEstadoA, addItem}}>
+    <Shop.Provider value={{estadoA, setEstadoA, addItem, cart}}>
         {children}
     </Shop.Provider>
   )

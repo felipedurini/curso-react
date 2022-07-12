@@ -6,18 +6,6 @@ import './style.css'
 
 const ItemListContainer = ({greeting}) => {
 
- /*  const handleAdd = (count) => {
-    console.log(`se agregaron ${count} productos al carrito.`)
-  }
-
-  return (
-    <div>
-      <p>{greeting}</p>
-      <ItemCount handleAdd={handleAdd} initial={1} stock={10}/>
-    </div>
-  ) */
-
-
   
 const [characters, setCharacters] = useState([])
 const [productosFiltrados, setProductosFiltrados] = useState([])
@@ -29,8 +17,6 @@ useEffect(() => {
  try {
     const response=await task
     const data=await response.json()
-    console.log(data)
-    console.log(data.results)
     setCharacters(data.results);
     setProductosFiltrados(data.results);
   } catch (error) {
@@ -55,7 +41,6 @@ useEffect(() => {
   }
 }, [params, characters])
 
-console.log(characters)
 
 return (
   <div className='item-list'>
