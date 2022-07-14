@@ -17,8 +17,9 @@ useEffect(() => {
  try {
     const response=await task
     const data=await response.json()
-    setCharacters(data.results);
-    setProductosFiltrados(data.results);
+    console.log(data)
+    setCharacters(data);
+    setProductosFiltrados(data);
   } catch (error) {
   console.log(error)
   }
@@ -26,7 +27,7 @@ useEffect(() => {
   
   const task= new Promise((res,rej)=>{
     setTimeout(() => {
-      res(fetch('https://rickandmortyapi.com/api/character'))
+      res(fetch('http://localhost:8000/array'))
     }, 2000);
     })
 getCharacters()
@@ -34,7 +35,7 @@ getCharacters()
 
 useEffect(() => {
   if (params?.categoryId) {
-    const productosFiltrados = characters.filter(producto => producto.species === params.categoryId)
+    const productosFiltrados = characters.filter(producto => producto.categoria === params.categoryId)
     setProductosFiltrados(productosFiltrados)
   } else {
     setProductosFiltrados(characters)

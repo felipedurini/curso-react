@@ -12,9 +12,11 @@ const ItemDetailContainer = () => {
     useEffect(() => {
       const getProducts = async() => {
         try {
-          const response= await fetch(`https://rickandmortyapi.com/api/character/${params.productId}`)
+          console.log(params.productId)
+          const response= await fetch(`http://localhost:8000/array`)
           const data=await response.json()
-          setProduct(data)
+          const answer=data[params.productId-1]
+          setProduct(answer)
         } catch (error) {
           console.log(error)
         }

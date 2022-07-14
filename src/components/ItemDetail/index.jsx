@@ -26,11 +26,9 @@ const ItemDetail = ({product}) => {
   }
 
   return (<div className='item-detail'>
-  <h1>{product.name}</h1>
-  <img src={product.image}/>
-    <p>{product.status}</p>
-    <p>{product.species}</p>
-    <p>{product.gender}</p>
+  <h1>{product.nombre}</h1>
+  <img src={product.img}/>
+    <p>${product.precio}</p>
     {!qtyAdded?
     <ItemCount handleAdd={onConfirm} stock={product.stock} /> :
     <button onClick={handleNavigate}>Terminar compra</button>

@@ -19,11 +19,10 @@ console.log(estadoA)
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           <Link className='title' to='/'>Home</Link>
-          <NavDropdown title="Species" id="basic-nav-dropdown">
-            <Link className='title' to='/category/Human'>Humans</Link>
-            <Link className='title' to='/category/Alien'>Aliens</Link>
-            <Link className='title' to='/category/Others'>Others</Link>
-            <Link className='title' to='/category/Others'>{estadoA}</Link>
+          <NavDropdown title="Categorias" id="basic-nav-dropdown">
+            <Link className='title' to='/category/remeras'>Remeras</Link>
+            <Link className='title' to='/category/buzos'>Buzos</Link>
+            <Link className='title' to='/category/pantalones'>Pantalones</Link>
           </NavDropdown>
         <CartWidget/>
         </Nav>

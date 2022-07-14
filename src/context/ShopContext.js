@@ -12,7 +12,11 @@ const ShopProvider = ({children}) => {
       console.log(qty)
       const repeatedProduct=isInCart(product);
       if(repeatedProduct){
-            repeatedProduct.quantity+=qty
+        
+        
+        /* setCart([...cart].filter(x=>x!=repeatedProduct)) */
+
+         repeatedProduct.quantity+=qty
             setCart([...cart])
             console.log(product)
       }
@@ -22,8 +26,14 @@ const ShopProvider = ({children}) => {
       }
     }
 
+    const deleteItem = (product, qty) => {
+
+      console.log('aaaa')
+
+    }
+
     const isInCart = (producto) => {
-      return cart.find(element => element.id===producto.id)
+      return cart.find(element => element.index===producto.index)
     }
 
   return (
