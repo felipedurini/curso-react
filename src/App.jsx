@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PageNotFound from './components/PageNotFound';
 import ItemDetailContainer from './containers/ItemDetailContainer';
 import Cart from './containers/Cart';
-import ShopProvider from './context/ShopContext';
+import ShopProvider from './context/ShopContext'
 
 
 function App() {

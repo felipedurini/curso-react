@@ -5,18 +5,18 @@ import { useNavigate } from 'react-router-dom'
 
 const Item = ({character}) => {
     const navigate=useNavigate()
-    const {nombre, precio, img} = character
+    const {name, price, img} = character
     const handeDetail= () => {
-      navigate(`/detail/${character.index}`)
+      navigate(`/detail/${character.id}`)
     }
   return (
     <div className='item' onClick={handeDetail}>
 <Card className='card' style={{ width: '18rem' }}>
-  <Card.Img variant="top" src={img} />
+  <Card.Img variant="top" src={`${img}`} />
   <Card.Body>
-    <Card.Title>{nombre}</Card.Title>
+    <Card.Title>{name}</Card.Title>
     <Card.Text>
-      ${precio}    </Card.Text>
+      ${price}    </Card.Text>
   </Card.Body>
 </Card>
     </div>

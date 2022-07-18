@@ -8,8 +8,7 @@ import { Shop } from '../../context/ShopContext'
 
 const NavBar = () => {
 
-const {estadoA}=useContext(Shop)
-console.log(estadoA)
+const {cart} = useContext(Shop)
 
   return (
     <Navbar bg="light" expand="lg" id='navbar'>
@@ -24,9 +23,9 @@ console.log(estadoA)
             <Link className='title' to='/category/buzos'>Buzos</Link>
             <Link className='title' to='/category/pantalones'>Pantalones</Link>
           </NavDropdown>
-        <CartWidget/>
         </Nav>
       <Input></Input>
+        {cart.length? <Link className='title' to='/cart'><CartWidget/></Link>: null}
       </Navbar.Collapse>
     </Container>
   </Navbar>

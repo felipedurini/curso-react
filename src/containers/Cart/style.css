@@ -4,13 +4,18 @@
     flex-wrap: wrap;
     align-items: center;
 }
-.item-cart{
-    text-align: center;
-    margin: 5px;
-}
 #title{
     display: block !important;
     margin: 0 auto;
     width: 50%;
     text-align: center;
+}
+#carrito-vacio{
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+}
+.item-cart{
+    text-align: center;
+    margin: 5px;
 }
