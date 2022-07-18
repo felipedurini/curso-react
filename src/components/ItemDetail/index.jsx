@@ -27,7 +27,7 @@ const ItemDetail = ({product}) => {
 
   return (<div className='item-detail'>
   <h1>{product.name}</h1>
-  <img src={`${product.img}`}/>
+  <img className='img-item-detail' src={product.img}/>
     <p>${product.price}</p>
     {!qtyAdded?
     <ItemCount handleAdd={onConfirm} stock={product.stock} /> :
