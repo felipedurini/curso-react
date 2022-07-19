@@ -25,9 +25,9 @@ else{
         <div id='container'>
       {cart.map(item=>{
         return     <Card key={item.id} className='item-cart' style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={`${item.img}`} />
+        <Card.Img variant="top" src={`${item.image}`} />
         <Card.Body>
-          <Card.Title>{item.name}</Card.Title>
+          <Card.Title>{item.title}</Card.Title>
           <Card.Text>
             Precio: ${item.price}
           </Card.Text>

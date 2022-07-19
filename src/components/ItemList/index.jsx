@@ -2,9 +2,9 @@ import React from 'react'
 import Item from '../Item'
 import './style.css'
 
-const ItemList = ({characters}) => {
+const ItemList = ({productos}) => {
     return (
-        <>{characters?.map(character=> <Item key={character.id} character={character}/>)}</>
+        <>{productos?.map(producto=> <Item key={producto.id} producto={producto}/>)}</>
   )
 }
 

@@ -15,7 +15,7 @@ const ItemDetailContainer = () => {
       const getProducts = async() => {
         try {
 
-      /*     const docRef = doc(db, "products", "j6EdRoO93ZimtrsonV1E");
+         const docRef = doc(db, "products", params.productId);
           const docSnap = await getDoc(docRef);
 
           if (docSnap.exists()) {
@@ -27,12 +27,12 @@ const ItemDetailContainer = () => {
             // doc.data() will be undefined in this case
             console.log("No such document!");
           } 
- */
 
-          const response= await fetch(`http://localhost:8000/array`)
+
+          /* const response= await fetch(`http://localhost:8000/array`)
           const data=await response.json()
           const answer=data[params.productId-1]
-          setProduct(answer)
+          setProduct(answer) */
         } catch (error) {
           console.log(error)
         }

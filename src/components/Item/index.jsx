@@ -3,18 +3,18 @@ import { Card } from 'react-bootstrap'
 import './style.css'
 import { useNavigate } from 'react-router-dom'
 
-const Item = ({character}) => {
+const Item = ({producto}) => {
     const navigate=useNavigate()
-    const {name, price, img} = character
+    const {title, price, image} = producto
     const handeDetail= () => {
-      navigate(`/detail/${character.id}`)
+      navigate(`/detail/${producto.id}`)
     }
   return (
     <div className='item' onClick={handeDetail}>
 <Card className='card' style={{ width: '18rem' }}>
-  <Card.Img variant="top" src={`${img}`} />
+  <Card.Img variant="top" src={`${image}`} />
   <Card.Body>
-    <Card.Title>{name}</Card.Title>
+    <Card.Title>{title}</Card.Title>
     <Card.Text>
       ${price}    </Card.Text>
   </Card.Body>
