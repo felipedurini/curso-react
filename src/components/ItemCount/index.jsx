@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const ItemCount = ({handleAdd, initial, stock}) => {
+const ItemCount = ({handleAdd, stock}) => {
 
     const [count, setCount]=useState(1)
 

@@ -9,6 +9,7 @@ import PageNotFound from './components/PageNotFound';
 import ItemDetailContainer from './containers/ItemDetailContainer';
 import Cart from './containers/Cart';
 import ShopProvider from './context/ShopContext'
+import UserForm from './components/UserForm';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Route path='/category/:categoryId' element={<ItemListContainer/>}></Route>
       <Route path='/detail/:productId' element={<ItemDetailContainer/>}></Route>
       <Route path='/cart' element={<Cart/>}></Route>
+      <Route path='/form' element={<UserForm/>}></Route>
       <Route path='*' element={<PageNotFound/>}/>
     </Routes>
     </BrowserRouter> 

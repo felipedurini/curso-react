@@ -10,7 +10,6 @@ const ItemDetail = ({product}) => {
 
   const navigate = useNavigate();
 
-  product.stock=10
 
   const [qtyAdded, setQty]=useState(0)
 

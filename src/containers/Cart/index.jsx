@@ -1,13 +1,30 @@
 import React, { useContext } from 'react'
 import { Button, Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Shop } from '../../context/ShopContext'
 import './style.css'
+import ordenGenerada from '../../utils/generarOrden';
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from '../../firebase/config'
+import guardarOrden from '../../utils/guardarOrden'
+
 
 const Cart = () => {
+  const navigate =useNavigate()
   const {cart} = useContext(Shop)
   const precios=cart.map(x=>x.quantity*x.price)
   const {deleteItem} = useContext(Shop)
+
+  const confirmarOrden = async () => {
+    const orden = ordenGenerada("Sebas", "Calle falsa 123", cart, 1240);
+    guardarOrden(cart, orden)
+
+const docRef = await addDoc(collection(db, "orders"), orden);
+
+
+
+  }
+
 
     if(!cart.length){
      return( 
@@ -42,6 +59,7 @@ else{
       </Card>
       })}
     </div>
+    <button onClick={confirmarOrden}>Terminar compra</button>
     </>
   )
 }
