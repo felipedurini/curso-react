@@ -10,14 +10,18 @@ const ItemDetail = ({product}) => {
 
   const navigate = useNavigate();
 
-
   const [qtyAdded, setQty]=useState(0)
 
   const {addItem} = useContext(Shop)
 
   const onConfirm = (qty) => {
+    if(qty>0){
     setQty(qty)
     addItem(product, qty)
+    }
+    else{
+      alert('El minimo es una unidad')
+    }
   }
 
   const handleNavigate = () => { 
@@ -33,7 +37,6 @@ const ItemDetail = ({product}) => {
     <button onClick={handleNavigate}>Terminar compra</button>
     }
     </div>
-    
   )
 }
 

@@ -32,6 +32,7 @@ const guardarOrden = (cart, orden) => {
             console.log(outOfStock);
 
             console.log(outOfStock.length)
+            console.log(productoEnCart);
     
             if (outOfStock.length === 0) {
                 addDoc(collection(db, 'orders'), orden).then(({ id }) => {
