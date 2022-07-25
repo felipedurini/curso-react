@@ -1,8 +1,12 @@
-const ordenGenerada = (nombre, direccion, cart, total) => {
+const ordenGenerada = (nombre, direccion, cart, total, mail, telefono) => {
+    
+
     return {
         buyer: {
             nombre: nombre,
-            direccion: direccion
+            direccion: direccion,
+            mail:mail,
+            telefono:telefono
         },
         items: cart
         ,

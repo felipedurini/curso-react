@@ -12,9 +12,11 @@ import ShopProvider from './context/ShopContext'
 import UserForm from './components/UserForm';
 
 
+
 function App() {
   return (
     <ShopProvider>
+
     <BrowserRouter>
     <NavBar/>
     <Routes>
@@ -26,6 +28,7 @@ function App() {
       <Route path='*' element={<PageNotFound/>}/>
     </Routes>
     </BrowserRouter> 
+
     </ShopProvider>
   );
 }

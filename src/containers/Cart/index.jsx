@@ -7,23 +7,16 @@ import ordenGenerada from '../../utils/generarOrden';
 import { addDoc, collection } from 'firebase/firestore'
 import { db } from '../../firebase/config'
 import guardarOrden from '../../utils/guardarOrden'
+import UserForm from '../../components/UserForm'
 
 
 const Cart = () => {
-  const navigate =useNavigate()
+  //const navigate =useNavigate()
   const {cart} = useContext(Shop)
+  const {handleShow} = useContext(Shop)
   const precios=cart.map(x=>x.quantity*x.price)
   const {deleteItem} = useContext(Shop)
 
-  const confirmarOrden = async () => {
-    const orden = ordenGenerada("Sebas", "Calle falsa 123", cart, 1240);
-    guardarOrden(cart, orden)
-
-const docRef = await addDoc(collection(db, "orders"), orden);
-
-
-
-  }
 
 
     if(!cart.length){
@@ -59,7 +52,8 @@ else{
       </Card>
       })}
     </div>
-    <button onClick={confirmarOrden}>Terminar compra</button>
+    {/* <button onClick={confirmarOrden}>Terminar compra</button> */}
+    <UserForm></UserForm>
     </>
   )
 }
