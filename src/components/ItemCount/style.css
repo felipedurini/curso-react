@@ -1,0 +1,42 @@
+.swal-text{
+    text-align: center;
+  }
+  .swal-footer{
+    text-align: center;
+  }
+  #minus{
+    background-color: rgb(255, 60, 60);
+    border-radius: 4px;
+    border: none;
+    margin: 10px;
+    height: 5vh;
+    width: 5vw;
+    color: beige;
+  }
+  #plus{
+    background-color: rgb(97, 97, 252);
+    border-radius: 10px;
+    border: none;
+    margin: 10px;
+    height: 5vh;
+    width: 5vw;
+    color: beige;
+  }
+  #add-to-cart{
+    background-color: rgb(158, 158, 158);
+    border-radius: 10px;
+    border: none;
+    margin: 10px;
+    height: 10vh;
+    width: 20vw;
+    font-size: large;
+    color: beige;
+  }
+  
+  .count-buttons:hover{
+    opacity: 0.8;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+  }
+
+  

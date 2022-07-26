@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import Input from '../Input'
 import CartWidget from '../CartWidget'
 import './style.css'
 import { Link } from 'react-router-dom'
@@ -24,7 +23,6 @@ const {cart} = useContext(Shop)
             <Link className='title' to='/category/pantalones'>Pantalones</Link>
           </NavDropdown>
         </Nav>
-      <Input></Input>
         {cart.length? <Link className='title' to='/cart'><CartWidget/></Link>: null}
       </Navbar.Collapse>
     </Container>

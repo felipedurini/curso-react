@@ -2,14 +2,19 @@ import React, { createContext, useState } from 'react'
 
 export const Shop = createContext()
 
-const ShopProvider = ({children}) => {
+/**
+ * @property {function} addItem adds items to the cart and sets it
+ * @property {function} deleteItem deletes an unit of a product once in the cart
+ * @property {function} isInCart checks if a product is already in the cart so that its card isn't repeated
+ * @property {number} qty number of products added to cart
+ */
 
+const ShopProvider = ({children}) => {
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);  
 
-  console.log(show);
 
     const [estadoA, setEstadoA] = useState('Valor por defecto')
 
@@ -46,6 +51,9 @@ const ShopProvider = ({children}) => {
     const isInCart = (producto) => {
       return cart.find(element => element.id===producto.id)
     }
+    
+    //to avoid warning
+    console.log(show)
 
   return (
     <Shop.Provider value={{estadoA, handleShow, handleClose, setEstadoA, addItem, cart, deleteItem, restart}}>

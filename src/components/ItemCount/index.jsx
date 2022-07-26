@@ -1,4 +1,13 @@
 import React, { useState } from 'react'
+import swal from 'sweetalert'
+import './style.css'
+
+
+  /**
+   * @property {function} onAdd adds an unit to the counter
+   * @property {function} onDecrement removes an unit from the counter
+   * @property {number} count number of products that will be added to cart
+   */
 
 const ItemCount = ({handleAdd, stock}) => {
 
@@ -8,7 +17,13 @@ const ItemCount = ({handleAdd, stock}) => {
         if(count<stock){
         setCount(count+1)}
         else{
-            alert('No hay suficiente stock')
+            swal({
+              title:'No hay stock',
+              text: 'Lo sentimos, pero este producto no está disponible por falta de stock',
+              icon: 'warning',
+              button: 'Aceptar',
+              className:'swal'
+            })
         }
     }
 
@@ -16,7 +31,13 @@ const ItemCount = ({handleAdd, stock}) => {
         if(count>1){
         setCount(count-1)}
         else{
-            alert('El minimo es una unidad')
+          swal({
+            title:'El mínimo es una unidad',
+            text: 'Para agregar un producto al carrito debe seleccionar al menos una unidad del mismo',
+            icon: 'warning',
+            button: 'Aceptar',
+            className:'swal'
+          })
         }
     }
 
@@ -24,11 +45,11 @@ const ItemCount = ({handleAdd, stock}) => {
     <div>
       <p>{count}</p>
 
-      <button onClick={onDecrement}>-</button>
+      <button id='minus' className='count-buttons' onClick={onDecrement}>-</button>
       
-      <button onClick={()=>handleAdd(count)}>Agregar al carrito</button>
+      <button id='add-to-cart' className='count-buttons' onClick={()=>handleAdd(count)}>Agregar al carrito</button>
 
-      <button onClick={onAdd}>+</button>
+      <button id='plus' className='count-buttons' onClick={onAdd}>+</button>
 
     </div>
   )

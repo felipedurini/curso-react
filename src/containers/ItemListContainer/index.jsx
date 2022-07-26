@@ -4,10 +4,17 @@ import ItemList from '../../components/ItemList'
 import './style.css'
 import { collection, query, getDocs } from "firebase/firestore";
 import { db } from '../../firebase/config'
+import Loader from '../../components/Loader';
+import swal from 'sweetalert'
 
-const ItemListContainer = ({greeting}) => {
+/**
+ * @property {function} getCharacters to get the products from database
+ * 
+ * 
+ */
 
-  
+const ItemListContainer = () => {
+
 const [productos, setProductos] = useState([])
 const [productosFiltrados, setProductosFiltrados] = useState([])
 const params= useParams() 
@@ -17,7 +24,7 @@ useEffect(() => {
   const getCharacters = async()=>{
  try {
 
-  /* automaticSave() */
+
 
     const q = query(collection(db, "products"));
     const querySnapshot = await getDocs(q);
@@ -29,7 +36,13 @@ useEffect(() => {
     setProductos(productos);
     setProductosFiltrados(productos);
   } catch (error) {
-  console.log(error)
+    swal({
+      title:'Ocurrió un error',
+      text: 'No se pudo traer los productos desde la base de datos' ,
+      icon: 'error',
+      button: 'Aceptar',
+      className:'swal'
+    }) 
   }
   }
   
@@ -52,7 +65,7 @@ return (
   {productos.length !== 0 ? 
     <ItemList productos={productosFiltrados}/> 
     :
-<p>Loading...</p>
+    <Loader></Loader>
   }
 </div>
 )

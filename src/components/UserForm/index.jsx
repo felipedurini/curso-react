@@ -5,8 +5,14 @@ import Modal from 'react-bootstrap/Modal';
 import { Shop } from '../../context/ShopContext';
 import ordenGenerada from '../../utils/generarOrden';
 import guardarOrden from '../../utils/guardarOrden';
+import './style.css'
+import swal from 'sweetalert'
+
 
 const UserForm = () => {
+
+  const hasNumber = /\d/;  
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -24,31 +30,26 @@ const UserForm = () => {
   const handleNombre = event => {
     const obj=orden
     obj.nombre=event.target.value
-    console.log(obj)
     setOrden(obj);
   };
   const handleMail = event => {
     const obj=orden
     obj.mail=event.target.value
-    console.log(obj)
     setOrden(obj);
   };
   const handleMail2 = event => {
     const obj=orden
     obj.mail2=event.target.value
-    console.log(obj)
     setOrden(obj);
   };
 const handleDireccion = event => {
   const obj=orden
   obj.direccion=event.target.value
-  console.log(obj)
   setOrden(obj)
 }
 const handleTelefono = event => {
   const obj=orden
   obj.telefono=Number(event.target.value)
-  console.log(obj)
   setOrden(obj)
 }
 
@@ -57,16 +58,47 @@ const handleTelefono = event => {
   const confirmarOrden = async () => {
     if (orden.nombre && orden.direccion && orden.mail && orden.mail2 && orden.telefono){
       if(orden.mail !== orden.mail2){
-        alert('No coinciden los correos electronicos')
+        swal({
+          title:'No coinciden los correos electrónicos',
+          text: 'Por favor asegúrese de que coincidan los correos electrónicos',
+          icon: 'error',
+          button: 'Aceptar',
+          className:'swal'
+        })
       }
-      else if(orden.nombre<=2){
-        alert('El nombre debe contener al menos dos caracteres')
-      }
+      else if(orden.nombre.length<=2){
+        swal({
+          title:'Su nombre es demasiado corto',
+          text: 'Por favor ingrese un nombre y apellido válido',
+          icon: 'error',
+          button: 'Aceptar',
+          className:'swal'
+        })      }
+      else if(orden.direccion.length<=5 || !hasNumber.test(orden.direccion)){
+        swal({
+          title:'Su direccion no es válida',
+          text: 'Por favor ingrese una dirección válida',
+          icon: 'error',
+          button: 'Aceptar',
+          className:'swal'
+        })      }
       else if(!orden.mail.includes('@')){
-        alert('Su correo electronico no contiene @')
+        swal({
+          title:'Su correo electrónico no es válido',
+          text: `Su correo electrónico no contiene "@"`,
+          icon: 'error',
+          button: 'Aceptar',
+          className:'swal'
+        }) 
       }
       else if(isNaN(orden.telefono) || orden.telefono.toString().length<8){
-        alert('Ingrese un numero de telefono valido')
+        swal({
+          title:'Su teléfono no es válido',
+          text: 'Por favor no ingrese letras y escriba al menos 8 números',
+          icon: 'error',
+          button: 'Aceptar',
+          className:'swal'
+        }) 
       }
       else{
         const nuevaOrden=ordenGenerada(orden.nombre, orden.direccion, cart, total , orden.mail, orden.telefono)
@@ -77,26 +109,33 @@ const handleTelefono = event => {
     }}
     else{
       if(isNaN(orden.telefono)){
-        alert('Ingrese un numero de telefono valido')
+        swal({
+          title:'Su teléfono no es válido',
+          text: 'Por favor no ingrese letras y escriba al menos 8 números',
+          icon: 'error',
+          button: 'Aceptar',
+          className:'swal'
+        }) 
       }
-      else{alert('Hay al menos un campo vacio')}
-    }
+      else{swal({
+        title:'Hay al menos un campo vacío',
+        text: 'Por favor asegúrese de rellenar todos los campos',
+        icon: 'error',
+        button: 'Aceptar',
+        className:'swal'
+      }) 
+      console.log(orden)
+    }}
 
-    
-   /*  ordenGenerada(orden.nombre, orden.direccion, cart, orden.total, orden.mail);
-     guardarOrden(cart, orden)
-     restart() */
-     
- //const docRef = await addDoc(collection(db, "orders"), orden);
    }
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button id='confirmar-compra' variant="primary" onClick={handleShow}>
         Terminar compra
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal id='modal' show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Formulario de Compra</Modal.Title>
         </Modal.Header>
@@ -140,6 +179,12 @@ const handleTelefono = event => {
             >
               <Form.Label>Telefono</Form.Label>
               <Form.Control as="textarea" rows={1} onChange={handleTelefono}/>
+            </Form.Group>
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label>Total: ${total}</Form.Label>
             </Form.Group>
           </Form>
         </Modal.Body>

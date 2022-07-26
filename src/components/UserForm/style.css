@@ -1,0 +1,17 @@
+#confirmar-compra{
+    margin: 5vh auto;
+    width: 50vh;
+    height: 10vh;
+    font-size: 3vh;
+    background-color: rgb(122, 196, 209);
+    display: block;
+    border: none;
+}
+#modal{
+    text-align: center;
+}
+#confirmar-compra:hover{
+    background-color: rgb(58, 58, 255);
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+}

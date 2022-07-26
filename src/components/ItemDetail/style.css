@@ -2,8 +2,55 @@
     margin: 0 auto;
     width: 50%;
     text-align: center;
+    border: black solid 1px;
+    border-radius: 15px;
+    font-size: 20px;
+    margin-top: 5vh;
+    background-color: #F5F5FA;
+    color: #6c6c6d;
 }
 .img-item-detail{
-    width: 10vw;
-    height: 20vh;
+    width: 15vw;
+    height: 25vh;
+}
+.swal-text{
+    text-align: center;
+  }
+.swal-footer{
+    text-align: center;
+  }
+
+
+/* CSS */
+#finish {
+    margin: 3vh auto;
+  align-items: center;
+  background: #f5f5fa;
+  border: 1px solid rgb(219, 219, 219);
+  border-radius: 8px;
+  box-shadow: -10px -10px 30px 0 #fff,10px 10px 30px 0 #1d0dca17;
+  box-sizing: border-box;
+  color: #2a1f62;
+  cursor: pointer;
+  display: flex;
+  font-family: "Cascadia Code",Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
+  font-size: 1.2rem;
+  justify-content: center;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  text-align: left;
+  transition: .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: pre;
+  width: max-content;
+  word-break: normal;
+  word-spacing: normal;
+}
+
+#finish:hover {
+  background: #f8f8ff;
+  box-shadow: -20px -20px 35px 0 rgb(255, 255, 255), 22px 22px 36px 0 #110a612f;
 }

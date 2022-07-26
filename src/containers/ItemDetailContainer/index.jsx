@@ -4,11 +4,24 @@ import ItemDetail from '../../components/ItemDetail'
 import { useParams } from 'react-router-dom'
 import { doc, getDoc } from "firebase/firestore";
 import { db } from '../../firebase/config';
+import Loader from '../../components/Loader';
+import './style.css'
+import swal from 'sweetalert'
 
 const ItemDetailContainer = () => {
 
+  const [loaded, setLoaded] = useState(false);
+
+
     const [product, setProduct] = useState({})
     const params = useParams()
+
+    useEffect(() => {
+      let timer = setTimeout(() => setLoaded(true), 2000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }, []);
 
 
     useEffect(() => {
@@ -19,22 +32,27 @@ const ItemDetailContainer = () => {
           const docSnap = await getDoc(docRef);
 
           if (docSnap.exists()) {
-            console.log("Document data:",docSnap.id ,docSnap.data());
-            console.log(docSnap.id);
             const productDetail = {id:docSnap.id, ...docSnap.data()}
             setProduct(productDetail)
           } else {
             // doc.data() will be undefined in this case
-            console.log("No such document!");
+            swal({
+              title:'Ocurrió un error',
+              text: 'La base de datos no encontró este producto, es posible que haya sido eliminado' ,
+              icon: 'error',
+              button: 'Aceptar',
+              className:'swal'
+            }) 
           } 
 
-
-          /* const response= await fetch(`http://localhost:8000/array`)
-          const data=await response.json()
-          const answer=data[params.productId-1]
-          setProduct(answer) */
         } catch (error) {
-          console.log(error)
+          swal({
+            title:'Ocurrió un error inesperado',
+            text: 'Ocurrió un error inesperado, no se pudo traer la información del producto desde la base de datos' ,
+            icon: 'error',
+            button: 'Aceptar',
+            className:'swal'
+          }) 
         }
       }
       getProducts()
@@ -42,7 +60,13 @@ const ItemDetailContainer = () => {
   
 
   return (
-    <ItemDetail product={product}/>
+    <>
+    {loaded ? 
+      <ItemDetail product={product}/>
+      :
+      <Loader></Loader>
+    }
+</>
   )
 }
 
